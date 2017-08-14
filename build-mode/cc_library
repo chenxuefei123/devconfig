@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: cc_library
+# key: cc_lib
+# --
+{
+    "cc_library": {
+      "name": "$1",
+      "cc_headers": [
+        "$1.h"
+      ],
+      "cc_sources": [
+        "$1.cc"
+      ],
+      "dependencies": [
+        "//base:base"$0
+      ]
+    }
+  },

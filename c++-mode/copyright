@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Copyright header for Luminate Wireless.
+# key: copy
+# --
+// Copyright 2014, Luminate Wireless
+// All rights reserved.

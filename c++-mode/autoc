@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name : Auto generator for .cc
+# key: autoc
+# --
+`(c-luminate-copyright)`
+#include ${1:`(c-header-file)`}
+
+`(c-namespace-enter)`
+`(c-namespace-exit)`

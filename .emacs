@@ -1,4 +1,4 @@
-(load "/Users/xuefei/ShareRemote/misc/elisp/beginner-bundle.el")
+(load "/Users/xuefei/coding/devconfig/main.el")
 
 (setq exec-path (append '("/usr/local/bin/") exec-path))
 

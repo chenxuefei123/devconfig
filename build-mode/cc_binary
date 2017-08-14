@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: cc_binary
+# key: cc_bin
+# --
+{
+    "cc_binary": {
+      "name": "$1",
+      "cc_sources": [
+        "$1.cc"
+      ],
+      "dependencies": [
+        "//base:base"$0
+      ]
+    }
+  },

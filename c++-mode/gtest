@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: gtest
+# key: gtest
+# --
+`(c-luminate-copyright)`
+#include ${2:`(c-header-file)`}
+#include "testing/gunit.h"
+
+`(c-namespace-enter)`namespace {
+
+class ${1:`(c-class-name)`} : public testing::Test {
+protected:
+  virtual void SetUp() override {
+  }
+
+  virtual void TearDown() override {
+  }
+};
+
+TEST_F($1, Foo) {
+}
+
+}  // anonymous namespace
+`(c-namespace-exit)`

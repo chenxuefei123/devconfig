@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name : Insert ClassName::
+# key: cls
+# --
+${1:`(c-class-name)`}::$0

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name : #ifndef XXX; #define XXX; #endif
+# key: autoh
+# --
+`(c-luminate-copyright)`
+#ifndef ${1:`(upcase (replace-regexp-in-string "[-./]" "_" (repobuild-get-relative-path-from-main (buffer-file-name))))`_}
+#define $1
+`(c-namespace-enter)`
+$0
+`(c-namespace-exit)`
+#endif  // $1

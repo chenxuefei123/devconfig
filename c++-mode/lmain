@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: Luminate C++ main function boilerplate
+# key: lmain
+# --
+`(c-luminate-copyright)`
+#include "base/glog.h"
+#include "base/gflags.h"
+#include "base/init.h"
+
+DEFINE_${1:bool}(${2:foo}, ${3:true}, "Foo flag");
+
+int main(int argc, char *argv[]) {
+  InitProgram(&argc, &argv);
+  $0
+  return 0;
+}

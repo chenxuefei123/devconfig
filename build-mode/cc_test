@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: cc_test
+# key: cc_test
+# --
+{
+    "cc_test": {
+      "name": "$1_test",
+      "cc_sources": [
+        "$1_test.cc"
+      ],
+      "dependencies": [
+        ":$1",
+        "//testing:gunit_main"$0
+      ]
+    }
+  },
