@@ -31,7 +31,7 @@
 (global-set-key (kbd "C-; C-c") 'auto-complete-mode)
 (global-set-key (kbd "C-; C-b") 'blank-mode)
 
-; key bindings for fast coding
+					; key bindings for fast coding
 (global-set-key (kbd "C-, C-l") 'goto-line)
 (global-set-key (kbd "C-, C-i") 'cscope-set-initial-directory)
 (global-set-key (kbd "C-, C-s") 'cscope-find-this-symbol)
@@ -48,3 +48,78 @@
 (global-set-key (kbd "C-, C-b") 'delete-trailing-whitespace)
 
 (setq tags-table-list '("~/coding/TAGS" "~/TAGS"))
+
+;; then in your init you can load all of the themes
+;; without enabling theme (or just load one)
+(load-theme 'ample t t)
+(load-theme 'ample-flat t t)
+(load-theme 'ample-light t t)
+;; choose one to enable
+(enable-theme 'ample)
+;; (enable-theme 'ample-flat)
+;; (enable-theme 'ample-light)
+
+;; Or, if you use `use-package', do something like this:
+(use-package ample-theme
+	     :init (progn (load-theme 'ample t t)
+			  (load-theme 'ample-flat t t)
+			  (load-theme 'ample-light t t)
+			  (enable-theme 'ample-flat))
+	     :defer t
+	     :ensure t)
+
+
+
+;;
+;; Go related configuration
+;;
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(frame-title-format "[ %b @ %f ][%*]" t)
+ '(package-selected-packages
+   (quote
+    (ample-theme go-autocomplete auto-complete exec-path-from-shell go-mode)))
+ '(show-paren-mode t)
+ '(visible-bell t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(setenv "GOPATH" "/Users/chenxuefei/go")
+
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$"
+                          ""
+                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq eshell-path-env path-from-shell) ; for eshell users
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when window-system (set-exec-path-from-shell-PATH))
+
+(add-to-list 'exec-path "/Users/chenxuefei/go/bin")
+(add-hook 'before-save-hook 'gofmt-before-save)
+
+(defun my-go-mode-hook ()
+					; Call Gofmt before saving                                                    
+  (add-hook 'before-save-hook 'gofmt-before-save)
+					; Godef jump key binding                                                      
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (local-set-key (kbd "M-*") 'pop-tag-mark)
+  )
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(defun auto-complete-for-go ()
+  (auto-complete-mode 1))
+(add-hook 'go-mode-hook 'auto-complete-for-go)
+
+(with-eval-after-load 'go-mode
+  (require 'go-autocomplete))
