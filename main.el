@@ -12,7 +12,6 @@
 ;; repobuild/BUILD file
 (require 'build-mode)
 (load "buildfmt")
-(load "repobuild")
 
 ;; Protobuf
 (require 'protobuf-mode)
