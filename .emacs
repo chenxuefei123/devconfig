@@ -59,16 +59,6 @@
 ;; (enable-theme 'ample-flat)
 ;; (enable-theme 'ample-light)
 
-;; Or, if you use `use-package', do something like this:
-(use-package ample-theme
-	     :init (progn (load-theme 'ample t t)
-			  (load-theme 'ample-flat t t)
-			  (load-theme 'ample-light t t)
-			  (enable-theme 'ample-flat))
-	     :defer t
-	     :ensure t)
-
-
 
 ;;
 ;; Go related configuration
@@ -123,3 +113,20 @@
 
 (with-eval-after-load 'go-mode
   (require 'go-autocomplete))
+
+;; set up javascript editing mode 
+ (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+(setq js-indent-level 2)
+
+(set-face-attribute 'default nil :height 200)
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
