@@ -1,0 +1,22 @@
+ 1133  sudo apt-get install make libncurses5-dev libclang-dev llvm-dev libz-dev libedit-dev
+ 1134  cmake ../
+ 1135  cd ~/
+ 1136  ls
+ 1137  mkdir gradle
+ 1138  cd gradle
+ 1139  wget http://services.gradle.org/distributions/gradle-2.7-bin.zip 
+ 1141  unzip gradle-2.7-bin.zip
+ 1143  cd gradle-2.7
+ 1145  cd bin\
+ 1148  cd ~/go/src/github.com/laioffer-inc/laicode-oj
+ 1153  cd runtime
+ 1155  cd build
+ 1157  cmake -DCMAKE_BUILD_TYPE=Release -DGRADLE_BINARY=/home/xuefei/gradle/gradle-2.7/bin/gradle ../
+ 1158  make 
+ 1160  grep -R unused-command-line-argument * 
+ 1161  emacs cppjudge/validator/CMakeLists.txt&
+ 1167  sudo apt-get install openjdk-8-jdk 
+ 1170  sudo apt-get install clang
+ 1172  sudo make 
+ 1173  sudo make install 
+ 1174  /usr/local/bin/judge_python.py --help
